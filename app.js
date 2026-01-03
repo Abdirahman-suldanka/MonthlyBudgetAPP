@@ -7,6 +7,7 @@ const expenseName = document.getElementById("expenseName");
 const expenseAmount = document.getElementById("expenseAmount");
 const expenseList = document.getElementById("expenseList");
 const alertMsg = document.getElementById("alert");
+const nameError = document.getElementById("nameError");
 
 budget = 0;
 remaining = 0;
@@ -71,5 +72,18 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   if (savedExpenses) {
     expenseList.innerHTML = savedExpenses;
+  }
+});
+
+expenseName.addEventListener("input", (event) => {
+  expName = event.target.value;
+  if (
+    expName.length < 15 &&
+    !/[1-9]/.test(expName) &&
+    !/[^A-Za-z1-9]/.test(expName)
+  ) {
+    nameError.classList.add("hidden");
+  } else {
+    nameError.classList.remove("hidden");
   }
 });
