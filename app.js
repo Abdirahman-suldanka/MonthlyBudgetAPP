@@ -12,6 +12,7 @@ const amountError = document.getElementById("alert");
 
 budget = 0;
 remaining = 0;
+amount = 0;
 
 function saveToLocal() {
   localStorage.setItem("budget", budget);
@@ -70,11 +71,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (savedBudget) {
     totalBudget.innerHTML = savedBudget;
+    console.log(savedBudget);
   }
 
   if (savedRemaining) {
-    remainingBudget.innerHTML = savedRemaining;
-    console.log(typeof savedRemaining);
+    remaining = Number(savedRemaining);
+    remainingBudget.innerHTML = remaining;
+    console.log(remaining);
   }
   if (savedExpenses) {
     expList.innerHTML = savedExpenses;
